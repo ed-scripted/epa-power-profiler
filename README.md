@@ -57,5 +57,6 @@ var regions = {
 ### Part 3 - Search
 
 ## References
-- [EPA Power Profiler Charts](http://oaspub.epa.gov/powpro/ept_pack.charts)
+- [EPA Tables](doc/tables.md)
+- [EPA Power Profiler](http://oaspub.epa.gov/powpro/ept_pack.charts)
 - [Zipcode Finder](http://maps.huge.info/zip.htm)
