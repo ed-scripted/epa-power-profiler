@@ -29,26 +29,27 @@ You will now add regional averages to your table.  Pick at least 10 different re
 2) Make a hash that list **only TWO** regions at first.  We want to make sure your project is working before adding the full ten regions.  Your Hash must be organized as follows:
 
 ```
-var regions = {
-  "{STATE_ONE}": [
+var states  = {
+  "{STATE_ONE}":
     {
-      "utility": "{UTILITY_ONE}",
+      "netGeneration": 3905323.35
       "fuel_mix": {
-        "hydro": 8.3,
+        "hydro":   8.3,
         "nuclear": 2.3,
         ...
       },
-      "emission_rate": {
-        "nitro": 92.2,
-        "sulfur": 1.3,
-        "carbon": 2941
+      "emissions": {
+        "nitro_oxides": 92.2,
+        "sulfur":       1.3,
+        "carbon": 2941,
+        "methane": 93,
+        "nitrous_oxide": 128
       }
     },
-    ...
-  ],
-  "{STATE_TWO}": [
+  "{STATE_TWO}": {
   ...
-  ]
+  },
+  ...
 }
 ```
 
