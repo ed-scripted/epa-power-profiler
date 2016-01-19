@@ -14,18 +14,18 @@ readFuelMix(function() {
 function readFuelMix(cb) {
   readPath(fuelMixPath, fuelMix, function(parts) {
     return {
-        "netGeneration": parts[1], 
-        "coal":          parts[2],
-        "oil":           parts[3],
-        "gas":           parts[4],
-        "otherFossil":   parts[5],
-        "nuclear":       parts[6],
-        "hydro":         parts[7],
-        "biomass":       parts[8],
-        "wind":          parts[9],
-        "solar":         parts[10],
-        "geoThermal":    parts[11],
-        "other":         parts[12] 
+        "netGeneration": parseFloat(parts[1]), 
+        "coal":          parseFloat(parts[2]),
+        "oil":           parseFloat(parts[3]),
+        "gas":           parseFloat(parts[4]),
+        "otherFossil":   parseFloat(parts[5]),
+        "nuclear":       parseFloat(parts[6]),
+        "hydro":         parseFloat(parts[7]),
+        "biomass":       parseFloat(parts[8]),
+        "wind":          parseFloat(parts[9]),
+        "solar":         parseFloat(parts[10]),
+        "geoThermal":    parseFloat(parts[11]),
+        "other":         parseFloat(parts[12]) 
       }; 
   }, cb);
 }
@@ -33,11 +33,11 @@ function readFuelMix(cb) {
 function readEmissions(cb) {
   readPath(emissionsPath, emissions, function(parts) {
     return {
-        "nitrogenOxide": parts[1], 
-        "sulfurDioxide": parts[2],
-        "carbonDioxide": parts[3],
-        "methane": parts[4],
-        "nitrousOxide":   parts[5]
+        "nitrogenOxide": parseFloat(parts[1]), 
+        "sulfurDioxide": parseFloat(parts[2]),
+        "carbonDioxide": parseFloat(parts[3]),
+        "methane": parseFloat(parts[4]),
+        "nitrousOxide":   parseFloat(parts[5])
       }; 
   }, cb);
 }
