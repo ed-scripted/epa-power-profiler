@@ -1,8 +1,24 @@
 var readline = require('readline');
 var fs       = require('fs');
 
-var fuelMixPath = process.argv[2];
-var emissionsPath = process.argv[3];
+var fuelMixPath   = './doc/fuel_mix.csv';
+var emissionsPath = './doc/emissions.csv';
+
+fs.accessSync(fuelMixPath, fs.F_OK);
+fs.accessSync(emissionsPath, fs.F_OK);
+
+process.argv.shift();
+process.argv.shift();
+
+var nameSize = 'long';
+if (process.argv.length > 0 && process.argv[0][0] === '-') {
+  nameSize = process.argv[0].substring(1).toLowerCase();
+  process.argv.shift();
+}
+if (nameSize != 'short' && nameSize != 'long') {
+  console.error('Invalid Name Size: ' + nameSize);
+  process.exit();
+}
 
 var fuelMix = {};
 var emissions = {};
@@ -123,11 +139,18 @@ var fullStateName = {
 function done() {
   var finalResult = {};
   for (state in fuelMix) {
+    if (process.argv.length > 0 && process.argv.indexOf(state) < 0) {
+      continue;
+    }
     var stateFuelMix = fuelMix[state];
     var netGeneration = stateFuelMix.netGeneration;
     delete stateFuelMix.netGeneration;
     var stateEmissions = emissions[state];
-    finalResult[fullStateName[state]] = {
+    var stateName = state;
+    if (nameSize === 'long') {
+      stateName = fullStateName[state];
+    }
+    finalResult[stateName] = {
       "netGeneration": netGeneration,
       "fuelMix": stateFuelMix, 
       "emissions": stateEmissions

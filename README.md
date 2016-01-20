@@ -21,18 +21,19 @@ The base tables for the National Averages are provided for you in the html, you 
 
 3) Use JQuery `append` function to add a row to the fuel mix and emission rates table, filling in all the needed columns from the hash map you made in the previous step.
 
-### Part 2 - Regional Averages - Nested Hashes and Lists
-You will now add regional averages to your table.  Pick at least 10 different regions by zip code (list all utilities within the region), a tool to find zip codes is provided in the reference.  These zip codes must come from 3 different states. 
+### Part 2 - State Averages - Nested Hashes and Lists
+You will now add state averages to your table.  Pick at least 5 different states
+from the provided emissions tables.
 
-1) Create the base regional tables, they will be very similar to the National Average tables.  The most important difference is you must add two extra columns, a 'State' column and a 'Electric Utility' column.
+1) Create the base state tables, they will be very similar to the National Average tables.  The most important difference is you must add an extra column to store the State.
 
-2) Make a hash that list **only TWO** regions at first.  We want to make sure your project is working before adding the full ten regions.  Your Hash must be organized as follows:
+2) Make a hash that list **only TWO** states at first.  We want to make sure your project is working before adding more states.  Your Hash must be organized as follows:
 
 ```
 var states  = {
-  "{STATE_ONE}":
+  "New York":
     {
-      "netGeneration": 3905323.35
+      "net_generation": 3905323.35
       "fuel_mix": {
         "hydro":   8.3,
         "nuclear": 2.3,
@@ -46,14 +47,45 @@ var states  = {
         "nitrous_oxide": 128
       }
     },
-  "{STATE_TWO}": {
+  "Florida": {
   ...
   },
   ...
 }
 ```
 
-3) Use JQuery `append` to add these regions to the tables you made in the previous steps.  You *must* use for loops to fill in these tables.  In fact you must use *nested* for loops to fill in the table.
+3) Use JQuery `append` to add these regions to the tables you made in the previous steps.  You *must* use for loops to fill in these tables.  In fact you must use *nested* for loops to fill in the table. Note that you must loop over a hash of states, not an array.  The easiest way to loop over this hash would be to use a `for in` loop, which goes through each key in the hash.  For Example:
+
+```
+var states = {
+  "New York": 1,
+  "Florida":  2,
+  "California": 3
+}
+
+for (key in states) {
+  console.log(key + ": " + states[key]);
+}
+```
+
+Will print the following:
+
+```
+New York: 1
+Florida: 2
+California: 3
+```
+
+Again, note that the hash of states and emissions is *nested*, you will need to
+loop through the states and then inside that loop begin a nother loop through
+the `fuel_mix` and the `emissions`.  Below is an example:
+
+```
+var states = {
+  "New York": {
+    "net
+  }
+}
 
 ### Part 3 - Search
 
