@@ -21,7 +21,7 @@ The base tables for the National Averages are provided for you in the html, you 
 
 3) Use JQuery `append` function to add a row to the fuel mix and emission rates table, filling in all the needed columns from the hash map you made in the previous step.
 
-### Part 2 - State Averages - Nested Hashes and Lists
+### Part 2 - State Averages - Nested Hashes
 You will now add state averages to your table.  Pick at least 5 different states
 from the provided emissions tables.
 
@@ -56,7 +56,7 @@ var states  = {
 
 3) Use JQuery `append` to add these states epa data to the tables you made in the previous steps.  You *must* use for loops to fill in these tables. Note that you must loop over a hash of states, not an array. The easiest way to loop over this hash would be to use a `for in` loop, which goes through each key in the hash.  For Example:
 
-```
+```javascript
 var states = {
   "New York": 1,
   "Florida":  2,
@@ -80,7 +80,7 @@ Again, note that the hash of states and emissions is *nested*, you will need to
 loop through the states and then extract the `fuelMix` and `emissions`.
 Below is an example:
 
-```
+```javascript
 var states = { California: 
    { netGeneration: 199189655.8,
      fuelMix: 
