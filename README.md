@@ -1,4 +1,4 @@
-# EPA Power Profiler - Unit 1
+# EPA Power Profiler
 
 ## Background
 
@@ -156,6 +156,10 @@ for (var stateName in states) {
 
 //Use a similar pattern to fill in emission rows.
 ```
+
+## csvtohash.js
+
+Writing in all the data to the hash by hand can be tedious.  To help you with that I wrote a tool, `csvtohash.js` that will make this much easier.  You can download it in the cloud9 command prompt with this command `wget -O csvtohash.js https://git.io/vzzGs` (make sure you are in the root of your workspace).  Then you can run the script with `node csvtohash.js`.  By default it will list all 50 states hashes, with the full state name as the key.  If you run `node csvtohash.js -short` it will print all 50 states with abbrevated state names (i.e. NY, FL, CA, etc.).  Finally, you can easily filter out which states to print by providing a list of abbrevated state names as arguments.  For example, `node csvtohash.js -short NY FL CA` will only print out the hashes for the states of New York, Florida, and California; which are the states we used in the example in Part 2.
 
 ## References
 - [EPA Tables](doc/tables.md)
