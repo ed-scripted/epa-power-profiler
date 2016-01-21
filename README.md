@@ -33,18 +33,18 @@ from the provided emissions tables.
 var states  = {
   "New York":
     {
-      "net_generation": 3905323.35
-      "fuel_mix": {
+      "netGeneration": 3905323.35
+      "fuelMix": {
         "hydro":   8.3,
         "nuclear": 2.3,
         ...
       },
       "emissions": {
-        "nitro_oxides": 92.2,
+        "nitrogenOxides": 92.2,
         "sulfur":       1.3,
         "carbon": 2941,
         "methane": 93,
-        "nitrous_oxide": 128
+        "nitrousOxide": 128
       }
     },
   "Florida": {
@@ -54,7 +54,7 @@ var states  = {
 }
 ```
 
-3) Use JQuery `append` to add these regions to the tables you made in the previous steps.  You *must* use for loops to fill in these tables.  In fact you must use *nested* for loops to fill in the table. Note that you must loop over a hash of states, not an array.  The easiest way to loop over this hash would be to use a `for in` loop, which goes through each key in the hash.  For Example:
+3) Use JQuery `append` to add these states epa data to the tables you made in the previous steps.  You *must* use for loops to fill in these tables. Note that you must loop over a hash of states, not an array. The easiest way to loop over this hash would be to use a `for in` loop, which goes through each key in the hash.  For Example:
 
 ```
 var states = {
@@ -77,19 +77,86 @@ California: 3
 ```
 
 Again, note that the hash of states and emissions is *nested*, you will need to
-loop through the states and then inside that loop begin a nother loop through
-the `fuel_mix` and the `emissions`.  Below is an example:
+loop through the states and then extract the `fuelMix` and `emissions`.
+Below is an example:
 
 ```
-var states = {
-  "New York": {
-    "net
-  }
+var states = { California: 
+   { netGeneration: 199189655.8,
+     fuelMix: 
+      { coal: 0.6317,
+        oil: 0.8499,
+        gas: 60.0661,
+        otherFossil: 0.0908,
+        nuclear: 9.2913,
+        hydro: 13.7605,
+        biomass: 3.1494,
+        wind: 4.8624,
+        solar: 0.6829,
+        geoThermal: 6.285,
+        other: 0.3299 },
+     emissions: 
+      { nitrogenOxide: 18268.77,
+        sulfurDioxide: 17622.66,
+        carbonDioxide: 57165609.7,
+        methane: 6596594.8,
+        nitrousOxide: 894245.8 } },
+  Florida: 
+   { netGeneration: 221099929.6,
+     fuelMix: 
+      { coal: 20.03,
+        oil: 0.6223,
+        gas: 67.7068,
+        otherFossil: 0.6277,
+        nuclear: 8.0823,
+        hydro: 0.0681,
+        biomass: 1.9807,
+        wind: 0,
+        solar: 0.0876,
+        geoThermal: 0,
+        other: 0.7946 },
+     emissions: 
+      { nitrogenOxide: 72573.66,
+        sulfurDioxide: 142273.76,
+        carbonDioxide: 125651562,
+        methane: 8748624,
+        nitrousOxide: 2690783.8 } },
+  'New York': 
+   { netGeneration: 135662526.5,
+     fuelMix: 
+      { coal: 3.3547,
+        oil: 0.4277,
+        gas: 43.831,
+        otherFossil: 0.6904,
+        nuclear: 30.0559,
+        hydro: 17.8021,
+        biomass: 1.6067,
+        wind: 2.1927,
+        solar: 0.0389,
+        geoThermal: 0,
+        other: 0 },
+     emissions: 
+      { nitrogenOxide: 23118.18,
+        sulfurDioxide: 34220.3,
+        carbonDioxide: 38169117.1,
+        methane: 3324160.7,
+        nitrousOxide: 561770 } } }
+
+//Create fuel mix row
+for (var stateName in states) {
+  var state = states[stateName];
+  var stateFuelMix = state['fuelMix'];
+  $('#stateFuelMix').append(
+    '<tr>' +
+      '<td>' + stateFuelMix['coal'] + '</td>' +
+      '<td>' + stateFuelMix['oil'] + '</td>' +
+      ...
+    '</tr>');
 }
 
-### Part 3 - Search
+//Use a similar pattern to fill in emission rows.
+```
 
 ## References
 - [EPA Tables](doc/tables.md)
 - [EPA Power Profiler](http://oaspub.epa.gov/powpro/ept_pack.charts)
-- [Zipcode Finder](http://maps.huge.info/zip.htm)

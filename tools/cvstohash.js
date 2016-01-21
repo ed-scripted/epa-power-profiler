@@ -139,7 +139,9 @@ var fullStateName = {
 function done() {
   var finalResult = {};
   for (state in fuelMix) {
-    if (process.argv.length > 0 && process.argv.indexOf(state) < 0) {
+    if (process.argv.length > 0 &&
+        process.argv.indexOf(state) < 0 &&
+        process.argv.indexOf(fullStateName[state]) < 0) {
       continue;
     }
     var stateFuelMix = fuelMix[state];
